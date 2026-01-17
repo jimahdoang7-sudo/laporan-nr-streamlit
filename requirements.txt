@@ -1,0 +1,5 @@
+streamlit
+pandas
+# Tambahkan library lain jika ada, misal:
+# openpyxl
+# mysql-connector-python
