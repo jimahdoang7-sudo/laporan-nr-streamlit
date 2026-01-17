@@ -55,7 +55,7 @@ def render(df, bulan, tahun):
         final_df.rename(columns=rename_map, inplace=True)
         
         st.info(f"📊 Ditemukan **{len(final_df)}** data pengantin WNA.")
-        st.dataframe(final_df, use_container_width=True)
+        st.dataframe(final_df, use_container_width=True, hide_index=True)
         
         # --- FITUR CETAK EXCEL ---
         if st.button("🚀 Cetak Laporan WNA"):
