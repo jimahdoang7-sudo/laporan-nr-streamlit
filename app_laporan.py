@@ -98,7 +98,8 @@ def show_rekap_total(df, bulan, tahun):
     total_val = len(df)
     k_val = len(df[(df[col_lok_asli].str.contains("KANTOR|KUA", na=False)) & (~df[col_lok_asli].str.contains("LUAR", na=False))]) if col_lok_asli else 0
     lk_val = len(df[df[col_lok_asli].str.contains("LUAR", na=False)]) if col_lok_asli else 0
-    isbat_val = len(df[df[col_lok_asli].str.contains("ISBAT", na=False)]) if col_lok_asli else 0
+    col_daftar = cari_kolom(df, ["NO PENDAFTARAN", "PENDAFTARAN"])
+    isbat_val = len(df[df[col_daftar].str.contains("^IB", na=False, case=False)]) if col_daftar else 0
 
     st.markdown(f"""
         <div class="macos-card-container">
@@ -146,8 +147,9 @@ def show_rekap_total(df, bulan, tahun):
             rekap_df[label] = df_fix[keys]
 
     st.markdown("<div style='background: white; padding: 20px; border-radius: 15px;'>", unsafe_allow_html=True)
-    st.dataframe(rekap_df, use_container_width=True)
+    st.dataframe(rekap_df, use_container_width=True, hide_index=True)
     st.markdown("</div>", unsafe_allow_html=True)
+    
 
     if st.button("🚀 Cetak Excel Rekap Semua"):
         output = BytesIO()
