@@ -57,7 +57,7 @@ def render(df, bulan, tahun):
         final_df.rename(columns=current_rename_map, inplace=True)
 
         st.info(f"✅ Ditemukan **{len(final_df)}** data Wali Hakim (Filter: {col_status_wali})")
-        st.dataframe(final_df, use_container_width=True)
+        st.dataframe(final_df, use_container_width=True, hide_index=True)
 
         # --- TOMBOL CETAK ---
         if st.button("🚀 Cetak Wali Hakim"):
