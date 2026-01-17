@@ -54,7 +54,7 @@ def render(df, bulan, tahun):
         final_df['Nama Penghulu Hadir'] = df_f[c_penghulu] if c_penghulu else "-"
 
         st.info(f"📊 Menampilkan **{len(final_df)}** data PNBP. (Kolom Jumlah diset otomatis jika data kosong)")
-        st.dataframe(final_df, use_container_width=True)
+        st.dataframe(final_df, use_container_width=True, hide_index=True)
 
         if st.button("🚀 Cetak Excel PNBP"):
             output = BytesIO()
